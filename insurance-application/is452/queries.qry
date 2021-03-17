@@ -1,0 +1,23 @@
+/**
+ * New query file
+ */
+query selectInsuranceCompanyByInsuredAsset {
+  description: "Select an insurance company by an insured asset"
+  statement:
+    SELECT org.insurance.InsuranceOffer
+      WHERE ((privateAsset == _$privateAsset) AND (status == 'accepted'))
+}
+
+query selectAssetByPolicyholder {
+  description: "Select an asset based on the owner"
+  statement:
+    SELECT org.insurance.PrivateAsset
+      WHERE (policyholder == _$policyholder)
+}
+
+query selectInsuranceOffersByPolicyholder {
+  description: "Select an insurance offer based on the policyholder"
+  statement:
+    SELECT org.insurance.InsuranceOffer
+      WHERE (policyholder == _$policyholder)
+}
