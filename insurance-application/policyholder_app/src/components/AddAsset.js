@@ -28,7 +28,7 @@ class AddAsset extends Component {
   render() {
     return (
       <div>
-      <h1>Add New Asset</h1>
+      <h2>Add New Asset</h2>
         <AddAssetForm onSubmit={this.onSubmit} onChange={this.onChange} assetType={this.state.assetType} value={this.state.value} durationInMonths={this.state.durationInMonths} />
       </div>
     );

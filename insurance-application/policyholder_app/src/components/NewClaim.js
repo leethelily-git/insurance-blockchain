@@ -27,7 +27,7 @@ class NewClaim extends Component {
     render() {
         return (
             <div >
-                <h1>New Claim</h1>
+                <h2>New Claim</h2>
                 <NewClaimForm onSubmit={this.onSubmit} onChange={this.onChange}
                     assetID={this.state.assetID} claimValue={this.state.claimValue}
                     claimDescription={this.state.claimDescription} assets={this.props.assets} />

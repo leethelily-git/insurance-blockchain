@@ -3,7 +3,7 @@
     "composer": "^0.20.9"
   },
   "name": "is452",
-  "version": "0.0.5",
+  "version": "0.1.1",
   "description": "blockchain insurance app",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/is452.bna",

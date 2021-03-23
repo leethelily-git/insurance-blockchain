@@ -18,14 +18,14 @@ class UserAssetsItems extends Component {
         let assetStyle = {
             card: {
                 display: 'inline-block',
-                background: '#333',
+                background: '#ccebff',
                 width: '350px',
-                height: '160px',
+                height: '110px',
                 textAlign: 'left',
-                padding: '20px',
+                padding: '10px',
                 margin: '20px',
                 border: '5px solid #333',
-                color: 'white'
+                color: 'black'
             }
         }
 
@@ -44,7 +44,10 @@ class UserAssetsItems extends Component {
             insuranceOffer: {
                 borderBottom: '1px solid black',
                 padding: '10px',
-                color: 'white'
+                color: 'black'
+            },
+            insureStyle: {
+                color: 'red'
             }
         }
 
@@ -60,6 +63,9 @@ class UserAssetsItems extends Component {
                         </div>) :
                         ('')
                 ))}
+                {this.props.asset.insured ? 
+                    (<p style={style.insureStyle}>Insured</p>) :
+                    ('')}
             </div>
         )
     }

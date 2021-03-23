@@ -38,14 +38,14 @@ asset PrivateAsset identified by id {
   o Double value
   --> Policyholder policyholder
   o Integer durationInMonths
-  o Double riskAnalysisScore default = 0.0
+  // o Double riskAnalysisScore default = 0.0
   --> InsuranceCompany insuranceCompany optional
 }
 
 enum AssetType {
-  o CAR
-  o HOUSE
   o PHONE
+  o WALLET
+  o BAG
 }
 
 
@@ -79,9 +79,9 @@ transaction MakeInsuranceOffer {
   o Double monthlyCost
 }
 
-transaction RiskAnalysis {
-  --> PrivateAsset privateAsset
-}
+// transaction RiskAnalysis {
+//   --> PrivateAsset privateAsset
+// }
 
 transaction CreateNewAsset {
   --> Policyholder policyholder

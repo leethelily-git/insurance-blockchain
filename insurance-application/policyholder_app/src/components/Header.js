@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <header style={headerStyle}>
-        <h1 style={titleStyle}>Policyholder Blockchain Insurance</h1>
+        <h1 style={titleStyle}>Flight Insurance for Belongings</h1>
         <Link style={linkStyle} to="/">Home</Link>
       </header>
     )
@@ -13,14 +13,15 @@ class Header extends Component {
 }
 
 const headerStyle = {
-  background: '#333',
-  color: '#fff',
+  background: '#ccebff',
+  color: '#000',
   textAlign: 'right',
-  padding: '10px'
+  padding: '2px'
+
 }
 
 const linkStyle = {
-  color: '#fff',
+  color: '#000',
   textDecoration: 'none'
 
 }

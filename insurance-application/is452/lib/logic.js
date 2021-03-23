@@ -19,52 +19,52 @@ async function createNewAsset(asset) {
     await assetRegistry.add(newAsset)
 }
 
-/**
- * Risk Analysis
- * @param {org.insurance.RiskAnalysis} asset
- * @transaction
- */
- async function riskAnalysis(asset) {
-    let assetRegistry = await getAssetRegistry('org.insurance.PrivateAsset');
-    let score = 0
+// /**
+//  * Risk Analysis
+//  * @param {org.insurance.RiskAnalysis} asset
+//  * @transaction
+//  */
+//  async function riskAnalysis(asset) {
+//     let assetRegistry = await getAssetRegistry('org.insurance.PrivateAsset');
+//     let score = 0
 
-    if (asset.privateAsset.policyholder.noClaimsYears == 1) {
-        score += 1
-    }
+//     if (asset.privateAsset.policyholder.noClaimsYears == 1) {
+//         score += 1
+//     }
 
-    if (asset.privateAsset.policyholder.noClaimsYears == 2) {
-        score += 2
-    }
+//     if (asset.privateAsset.policyholder.noClaimsYears == 2) {
+//         score += 2
+//     }
 
-    if (asset.privateAsset.policyholder.noClaimsYears > 2) {
-        score += 4
-    }
+//     if (asset.privateAsset.policyholder.noClaimsYears > 2) {
+//         score += 4
+//     }
 
-    if (asset.privateAsset.description == 'Phone') {
-        score +=2
-    }
+//     if (asset.privateAsset.description == 'Phone') {
+//         score +=2
+//     }
 
-    if (asset.privateAsset.description == 'House') {
-        score +=3
-    }
+//     if (asset.privateAsset.description == 'House') {
+//         score +=3
+//     }
 
-    if (asset.privateAsset.description == 'Car') {
-        score +=2
-    }
+//     if (asset.privateAsset.description == 'Car') {
+//         score +=2
+//     }
 
-    if (asset.privateAsset.value < 10000.0) {
-        score += 1
-    }
+//     if (asset.privateAsset.value < 10000.0) {
+//         score += 1
+//     }
 
-    if (asset.privateAsset.value < 1000.0) {
-        score += 1
-    }
+//     if (asset.privateAsset.value < 1000.0) {
+//         score += 1
+//     }
 
-    asset.privateAsset.riskAnalysisScore = score
+//     asset.privateAsset.riskAnalysisScore = score
 
-    assetRegistry.update(asset.privateAsset)
+//     assetRegistry.update(asset.privateAsset)
 
-}
+// }
 
 
 /**

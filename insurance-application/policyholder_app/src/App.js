@@ -8,7 +8,7 @@ import Homepage from './components/Homepage'
 class App extends Component {
 
   state = {
-    name: "bob",
+    name: "finn",
     assets: [],
     user: {},
     insuranceOffers: [],
@@ -146,7 +146,7 @@ class App extends Component {
         <Header />
         <Route exact path={"/"} render={props => (
           <React.Fragment>
-            <h1>My Assets</h1>
+            <h2>My Assets</h2>
             <Homepage assets={this.state.assets} addAsset={this.addAsset} user={this.state.user} newClaimFunc={this.newClaim} 
             insuranceOffers={this.state.insuranceOffers} 
             acceptInsuranceOfferFunc={this.acceptInsuranceOffer}/>

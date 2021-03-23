@@ -28,9 +28,10 @@ class AddAssetForm extends Component {
             },
             formStyle: {
                 display: 'block',
-                background: '#333',
+                background: '#ccebff',
                 padding: '10px',
-                margin: '10px'
+                margin: '10px',
+                border: '5px solid #333',
             }
         }
 
@@ -45,9 +46,9 @@ class AddAssetForm extends Component {
                         value={this.props.assetType}
                         onChange={this.props.onChange}>
                         <option value={"DEFAULT"}>Select asset type</option>
-                        <option value={"HOUSE"}>House</option>
-                        <option value={"CAR"}>Car</option>
                         <option value={"PHONE"}>Phone</option>
+                        <option value={"WALLET"}>Wallet</option>
+                        <option value={"BAG"}>Bag</option>
                     </select>
                 </div>
                 <div>
