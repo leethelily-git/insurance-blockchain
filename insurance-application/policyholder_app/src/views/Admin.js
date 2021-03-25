@@ -6,11 +6,20 @@ export default () => {
     const [privateAssets, setPrivateAssets] = useState([])
 
     const getPrivateAssets = () => {
-        Connection.search('PrivateAsset')
-            .then(data => {
-                setPrivateAssets(data)
+        Promise.all([
+            Connection.search('PrivateAsset'),
+            Connection.search('InsuranceOffer')
+        ])
+            .then(([privateAssets, insuranceOffers]) => {
+                // Worst performance code.... but here we go for IS452!
+                const pendingOfferIds = insuranceOffers.filter(({ status }) =>
+                    status === "pending" || status === "accepted" || status === "rejected")
+                    .map(({ privateAsset }) => privateAsset.split('#')[1])
+                const assetsToshow = privateAssets.filter(asset => pendingOfferIds.indexOf(asset.id) === -1)
+                
+                setPrivateAssets(assetsToshow)
             })
-            .catch(console.error)
+            .catch(e => 'Unabled to load due to: ' + e.message)
     }
 
     const makeClaimOffer = (assetId, policyHolder, monthlyCost) => {
@@ -25,14 +34,13 @@ export default () => {
         Connection.create('MakeInsuranceOffer', claimOfferPayload)
             .then(() => {
                 getPrivateAssets()
-                console.log('Successfully offered')
+                alert('Successfully offered private asset')
             })
             .catch(e => alert(e.message))
     }
 
     const renderPrivateAssetRows = () => {
         return privateAssets
-            .filter(({insuranceCompany}) => insuranceCompany === undefined)
             .map(({ id: assetId, assetType, value, policyholder }) => {
                 let monthlyOffer = '100'
                 const onOfferClaimClick = () => {
