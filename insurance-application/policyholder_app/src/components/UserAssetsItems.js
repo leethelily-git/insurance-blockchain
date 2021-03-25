@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import ViewInsuranceOffersItems from "./ViewInsuranceOffersItems";
-import Modal from "react-responsive-modal";
 
 class UserAssetsItems extends Component {
 
