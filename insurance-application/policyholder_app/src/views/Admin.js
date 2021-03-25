@@ -16,7 +16,7 @@ export default () => {
                     status === "pending" || status === "accepted" || status === "rejected")
                     .map(({ privateAsset }) => privateAsset.split('#')[1])
                 const assetsToshow = privateAssets.filter(asset => pendingOfferIds.indexOf(asset.id) === -1)
-                
+
                 setPrivateAssets(assetsToshow)
             })
             .catch(e => 'Unabled to load due to: ' + e.message)
@@ -34,7 +34,7 @@ export default () => {
         Connection.create('MakeInsuranceOffer', claimOfferPayload)
             .then(() => {
                 getPrivateAssets()
-                alert('Successfully offered private asset')
+                alert('Successfully offered asset')
             })
             .catch(e => alert(e.message))
     }
