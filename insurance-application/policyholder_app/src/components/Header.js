@@ -6,7 +6,8 @@ class Header extends Component {
     return (
       <header style={headerStyle}>
         <h1 style={titleStyle}>Flight Insurance for Belongings</h1>
-        <Link style={linkStyle} to="/">Home</Link>
+        <Link style={linkStyle} to="/">Home</Link> &nbsp;
+        <Link style={linkStyle} to="/admin">Admin</Link>
       </header>
     )
   }
