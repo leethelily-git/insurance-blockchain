@@ -4,6 +4,7 @@ import Header from '../components/Header'
 
 export default () => {
     const [privateAssets, setPrivateAssets] = useState([])
+    const [claims, setClaims] = useState([])
 
     const getPrivateAssets = () => {
         Promise.all([
@@ -22,6 +23,15 @@ export default () => {
             .catch(e => 'Unabled to load due to: ' + e.message)
     }
 
+    const getClaims = () => {
+        Connection.search('Claim')
+            .then(claims => {
+                const pendingClaims = claims.filter(({ status }) => status === "pending")
+                setClaims(pendingClaims)
+            })
+            .catch(e => alert(e.message))
+    }
+
     const makeClaimOffer = (assetId, policyHolder, monthlyCost) => {
         const claimOfferPayload = {
             monthlyCost,
@@ -37,6 +47,21 @@ export default () => {
                 alert('Successfully offered asset')
             })
             .catch(e => alert(e.message))
+    }
+
+    const processClaim = (claimId) => {
+        const claimProcessPayload = {
+            "$class": "org.insurance.ProcessClaim",
+            "claim": `resource:org.insurance.Claim#${claimId}`,
+            "status": "approved"
+        }
+
+        Connection.create('ProcessClaim', claimProcessPayload)
+            .then(() => {
+                getClaims()
+                alert("Claim successfully processed.")
+            })
+            .catch(e => alert("Claim process failed due to: " + e.message))
     }
 
     const renderPrivateAssetRows = () => {
@@ -63,8 +88,27 @@ export default () => {
             })
     }
 
+    const renderClaimRows = () => {
+        return claims.map(({ id: claimId, description, claimValue }) => {
+            const onProcessClaimClick = () => {
+                processClaim(claimId)
+            }
+
+            return (
+                <tr key={claimId}>
+                    <td>{description}</td>
+                    <td>{claimValue}</td>
+                    <td>
+                        <button onClick={onProcessClaimClick}>Process</button>
+                    </td>
+                </tr>
+            )
+        })
+    }
+
     useEffect(() => {
         getPrivateAssets()
+        getClaims()
     }, [])
 
     return (
@@ -91,6 +135,21 @@ export default () => {
                     {renderPrivateAssetRows()}
                 </tbody>
             </table>
+
+            <h3>Manage claims</h3>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Description of claim</th>
+                        <th>Claim value</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {renderClaimRows()}
+                </tbody>
+            </table>
+
         </React.Fragment>
     )
 }
