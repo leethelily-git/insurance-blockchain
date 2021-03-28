@@ -13,7 +13,7 @@ class Profile extends Component {
 
   }
     return (
-        <div style = { profileStyle }>
+        <div style={ profileStyle }>
             <p>Name: {this.props.user.name}</p>
             <p>Balance: {this.props.user.balance}</p>
             <p>Assets: {this.props.user.numAssets}</p>

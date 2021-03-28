@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import ViewInsuranceOffersItems from "./ViewInsuranceOffersItems";
 
 class UserAssetsItems extends Component {
 
     acceptOffer = () => {
         this.props.insuranceOffers.map((insuranceOffer) => (
-            (insuranceOffer.privateAsset.includes(this.props.asset.id) && insuranceOffer.status == 'pending') ? 
+            (insuranceOffer.privateAsset.includes(this.props.asset.id) && insuranceOffer.status === 'pending') ? 
                 this.props.acceptInsuranceOfferFunc(insuranceOffer.id)
             : ''
             
@@ -51,11 +50,11 @@ class UserAssetsItems extends Component {
         }
 
         return (
-            <div style = { assetStyle.card }>
+            <div style={ assetStyle.card }>
                 <p>Description: {this.props.asset.assetType}</p>
                 <p> Value: {this.props.asset.value}</p>
                 {this.props.insuranceOffers.map((insuranceOffer) => (
-                    (insuranceOffer.privateAsset.includes(this.props.asset.id) && insuranceOffer.status == 'pending') ?
+                    (insuranceOffer.privateAsset.includes(this.props.asset.id) && insuranceOffer.status === 'pending') ?
                         (<div>
                             <p>Insurance Offer</p>
                             <button onClick={this.acceptOffer} style={style.buttonStyle}>Accept</button>

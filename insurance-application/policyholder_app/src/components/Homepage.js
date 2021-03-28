@@ -8,7 +8,7 @@ import NewClaim from "./NewClaim";
 class Homepage extends Component {
 
     render() {
-      let style = {
+      let style ={
         UserAssetsStyle: {
           position: 'relative',
           top: '10px',
@@ -53,7 +53,7 @@ class Homepage extends Component {
             <Profile user={this.props.user} />
           </div>
           <div style={style.NewClaimStyle}>
-            <NewClaim newClaim={this.props.newClaimFunc} assets=   {this.props.assets} />
+            <NewClaim newClaim={this.props.newClaimFunc} assets={this.props.assets} />
           </div>
         </div>);
   

@@ -32,7 +32,7 @@ class ViewInsuranceOffersItems extends Component {
         let insuranceCompany = this.props.insuranceOffer.insuranceCompany.split('#')[1]
         let assetID = this.props.insuranceOffer.privateAsset.split('#')[1]
         // If the offer is pending and the insurance offer is for the asset
-        if ((this.props.insuranceOffer.status === "pending") && (assetID == this.props.asset.id)) {
+        if ((this.props.insuranceOffer.status === "pending") && (assetID === this.props.asset.id)) {
             asset = (<div style={style.insuranceOffer}>
                 <p>Insurance Company: {insuranceCompany}</p>
                 <p>Monthly Cost: {this.props.insuranceOffer.monthlyCost}</p>
